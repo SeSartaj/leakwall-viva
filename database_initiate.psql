@@ -1,0 +1,96 @@
+CREATE TABLE "user" (
+    id SERIAL NOT NULL, 
+    username VARCHAR(64), 
+    email VARCHAR(120), 
+    password_hash VARCHAR(128), 
+    PRIMARY KEY (id)
+);
+
+CREATE UNIQUE INDEX ix_user_email ON "user" (email);
+
+CREATE UNIQUE INDEX ix_user_username ON "user" (username);
+
+INSERT INTO alembic_version (version_num) VALUES ('d3ffff3684ce');
+
+INFO  [alembic.runtime.migration] Running upgrade d3ffff3684ce -> 2feb66689ad6, Post table
+
+CREATE TABLE post (
+    id SERIAL NOT NULL, 
+    title VARCHAR(132), 
+    timestamp TIMESTAMP WITHOUT TIME ZONE, 
+    user_id INTEGER, 
+    body TEXT, 
+    is_reviewed BOOLEAN, 
+    PRIMARY KEY (id), 
+    FOREIGN KEY(user_id) REFERENCES "user" (id)
+);
+
+CREATE INDEX ix_post_timestamp ON post (timestamp);
+
+CREATE INDEX ix_post_title ON post (title);
+
+UPDATE alembic_version SET version_num='2feb66689ad6' WHERE alembic_version.version_num = 'd3ffff3684ce';
+
+INFO  [alembic.runtime.migration] Running upgrade 2feb66689ad6 -> 6a2dbd8437d5, about_me and last_seen added to User class
+-- Running upgrade 2feb66689ad6 -> 6a2dbd8437d5
+
+ALTER TABLE "user" ADD COLUMN about_me VARCHAR(140);
+
+ALTER TABLE "user" ADD COLUMN last_seen TIMESTAMP WITHOUT TIME ZONE;
+
+UPDATE alembic_version SET version_num='6a2dbd8437d5' WHERE alembic_version.version_num = '2feb66689ad6';
+
+INFO  [alembic.runtime.migration] Running upgrade 6a2dbd8437d5 -> 59c679ecdd8e, followers
+-- Running upgrade 6a2dbd8437d5 -> 59c679ecdd8e
+
+CREATE TABLE followers (
+    follower_id INTEGER, 
+    followed_id INTEGER, 
+    FOREIGN KEY(followed_id) REFERENCES "user" (id), 
+    FOREIGN KEY(follower_id) REFERENCES "user" (id)
+);
+
+UPDATE alembic_version SET version_num='59c679ecdd8e' WHERE alembic_version.version_num = '6a2dbd8437d5';
+
+INFO  [alembic.runtime.migration] Running upgrade 59c679ecdd8e -> 5a5bf2a290e6, empty message
+-- Running upgrade 59c679ecdd8e -> 5a5bf2a290e6
+
+CREATE TABLE "user" (
+    id SERIAL NOT NULL, 
+    username VARCHAR(64), 
+    email VARCHAR(120), 
+    password_hash VARCHAR(128), 
+    about_me VARCHAR(140), 
+    last_seen TIMESTAMP WITHOUT TIME ZONE, 
+    PRIMARY KEY (id)
+);
+
+CREATE UNIQUE INDEX ix_user_email ON "user" (email);
+
+CREATE UNIQUE INDEX ix_user_username ON "user" (username);
+
+CREATE TABLE followers (
+    follower_id INTEGER, 
+    followed_id INTEGER, 
+    FOREIGN KEY(followed_id) REFERENCES "user" (id), 
+    FOREIGN KEY(follower_id) REFERENCES "user" (id)
+);
+
+CREATE TABLE post (
+    id SERIAL NOT NULL, 
+    title VARCHAR(132), 
+    timestamp TIMESTAMP WITHOUT TIME ZONE, 
+    user_id INTEGER, 
+    body TEXT, 
+    is_reviewed BOOLEAN, 
+    PRIMARY KEY (id), 
+    FOREIGN KEY(user_id) REFERENCES "user" (id)
+);
+
+CREATE INDEX ix_post_timestamp ON post (timestamp);
+
+CREATE INDEX ix_post_title ON post (title);
+
+UPDATE alembic_version SET version_num='5a5bf2a290e6' WHERE alembic_version.version_num = '59c679ecdd8e';
+
+COMMIT;

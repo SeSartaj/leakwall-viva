@@ -1,0 +1,183 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Amiri', sans-serif;
+  /* font-family: 'Lateef', sans-serif; */
+  font-size: 1.6375rem;
+  /* line-height: 1.875rem; */
+  
+}
+
+.logoType {
+  background-color: #111;
+  color: #f2f2f2;
+  text-align: center;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+nav ul li {
+    display: inline;
+}
+nav ul li form {
+  display: inline;
+
+}
+nav ul li a {
+    padding: 8px;
+    /* background-color: #dddddd; */
+    text-decoration: none;
+}
+
+main {
+  margin:10px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.headingHr {
+  /* display: none; */
+  display: block;
+  border: 1px dashed gray;
+  margin-left: 50%;
+  width: 50%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.sectionHr {
+  border: 2px solid black;
+}
+
+::placeholder {
+  font-family: 'Amiri', serif;
+}
+
+article h2,article p, .headingHr {
+  max-width: 600px;
+  padding-right: 10px;
+  padding-left: 5px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+article {
+    margin-bottom: 50px;
+}
+
+.articleActions {
+  margin: 20px 0px;
+  margin-top: 50px;
+}
+
+.centerImg {
+  display: block;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.centerDivHz {
+  display: block;
+  text-align: center;
+}
+
+.textLeft {
+  float: left;
+}
+
+.titleFootnote {
+  color: gray;
+  font-size: 1.2375rem
+}
+
+.smallCircular {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid black;
+}
+
+.mediumCircular {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 2px solid black;
+}
+
+.authorPhoto {
+  background-image: url('img1');
+  background-position: center;
+  background-size:contain;
+}
+
+.authorDetails {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  /* border: 2px solid gray; */
+  margin: 10px;
+  padding: 10px;
+  background: #f2f2f2;
+}
+
+.authorDetails  * {
+  margin: 10px 20px;
+}
+
+
+.mw600 {
+  max-width: 600px;
+}
+
+.textCenter {
+  text-align: center;
+}
+
+footer {
+  font-size: .6em;
+  background-color: #030303;
+  color: #f2f2f2;
+  /* text-align: center; */
+  padding: 20px;
+  padding-bottom: 50px;
+}
+
+.footer_div {
+  min-height: 200px;
+}
+
+.footerLinks {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+footer ul{
+  list-style-type: circle;
+  margin: 0;
+  padding: 0;
+
+
+}
+
+.authorTitle {
+  max-width: 600px;
+  margin:0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+

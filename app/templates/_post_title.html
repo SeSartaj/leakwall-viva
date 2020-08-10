@@ -1,0 +1,14 @@
+<table>
+    <td>
+        <a href="{{ url_for('render_post', id=post.id) }}">
+            <h3>{{ post.title }}</h3>
+        </a>
+    </td>
+    <td>
+    </td>
+    <td>
+        <a href="{{ url_for('user', username=post.author.username) }}" >
+            {{ post.author.username }}
+        </a>
+    </td>
+</table>
